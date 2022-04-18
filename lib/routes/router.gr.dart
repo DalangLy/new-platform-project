@@ -10,23 +10,23 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/material.dart' as _i5;
-import 'package:flutter/widgets.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i5;
+import 'package:flutter/material.dart' as _i6;
 
+import '../features/dashboard/dashboard_export.dart' as _i4;
 import '../features/home/home_export.dart' as _i3;
 import '../features/login/login_export.dart' as _i1;
 import '../features/register/register_export.dart' as _i2;
 
-class AppRouter extends _i4.RootStackRouter {
-  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
+class AppRouter extends _i5.RootStackRouter {
+  AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
+  final Map<String, _i5.PageFactory> pagesMap = {
     LoginRoute.name: (routeData) {
       final args = routeData.argsAs<LoginRouteArgs>();
-      return _i4.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i1.LoginPage(
               key: args.key,
@@ -35,7 +35,7 @@ class AppRouter extends _i4.RootStackRouter {
     },
     RegisterRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterRouteArgs>();
-      return _i4.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i2.RegisterPage(
               key: args.key,
@@ -44,24 +44,31 @@ class AppRouter extends _i4.RootStackRouter {
     },
     HomeWrapperRoute.name: (routeData) {
       final args = routeData.argsAs<HomeWrapperRouteArgs>();
-      return _i4.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i3.HomeWrapperPage(
               key: args.key, onLogoutResult: args.onLogoutResult));
+    },
+    DashboardWrapperRoute.name: (routeData) {
+      return _i5.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i4.DashboardWrapperPage());
     }
   };
 
   @override
-  List<_i4.RouteConfig> get routes => [
-        _i4.RouteConfig(LoginRoute.name, path: '/login'),
-        _i4.RouteConfig(RegisterRoute.name, path: '/register'),
-        _i4.RouteConfig(HomeWrapperRoute.name, path: '/')
+  List<_i5.RouteConfig> get routes => [
+        _i5.RouteConfig(LoginRoute.name, path: '/login'),
+        _i5.RouteConfig(RegisterRoute.name, path: '/register'),
+        _i5.RouteConfig(HomeWrapperRoute.name, path: '/', children: [
+          _i5.RouteConfig(DashboardWrapperRoute.name,
+              path: '', parent: HomeWrapperRoute.name)
+        ])
       ];
 }
 
 /// generated route for
 /// [_i1.LoginPage]
-class LoginRoute extends _i4.PageRouteInfo<LoginRouteArgs> {
+class LoginRoute extends _i5.PageRouteInfo<LoginRouteArgs> {
   LoginRoute(
       {_i6.Key? key,
       required dynamic Function(bool) onLoginResult,
@@ -94,7 +101,7 @@ class LoginRouteArgs {
 
 /// generated route for
 /// [_i2.RegisterPage]
-class RegisterRoute extends _i4.PageRouteInfo<RegisterRouteArgs> {
+class RegisterRoute extends _i5.PageRouteInfo<RegisterRouteArgs> {
   RegisterRoute(
       {_i6.Key? key,
       required void Function() onRegisterSuccess,
@@ -129,12 +136,16 @@ class RegisterRouteArgs {
 
 /// generated route for
 /// [_i3.HomeWrapperPage]
-class HomeWrapperRoute extends _i4.PageRouteInfo<HomeWrapperRouteArgs> {
-  HomeWrapperRoute({_i6.Key? key, required void Function() onLogoutResult})
+class HomeWrapperRoute extends _i5.PageRouteInfo<HomeWrapperRouteArgs> {
+  HomeWrapperRoute(
+      {_i6.Key? key,
+      required void Function() onLogoutResult,
+      List<_i5.PageRouteInfo>? children})
       : super(HomeWrapperRoute.name,
             path: '/',
             args:
-                HomeWrapperRouteArgs(key: key, onLogoutResult: onLogoutResult));
+                HomeWrapperRouteArgs(key: key, onLogoutResult: onLogoutResult),
+            initialChildren: children);
 
   static const String name = 'HomeWrapperRoute';
 }
@@ -150,4 +161,12 @@ class HomeWrapperRouteArgs {
   String toString() {
     return 'HomeWrapperRouteArgs{key: $key, onLogoutResult: $onLogoutResult}';
   }
+}
+
+/// generated route for
+/// [_i4.DashboardWrapperPage]
+class DashboardWrapperRoute extends _i5.PageRouteInfo<void> {
+  const DashboardWrapperRoute() : super(DashboardWrapperRoute.name, path: '');
+
+  static const String name = 'DashboardWrapperRoute';
 }

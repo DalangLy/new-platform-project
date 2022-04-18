@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../root_material_app.dart';
 
 class StartUpLoadingPage extends StatefulWidget {
@@ -11,6 +10,9 @@ class StartUpLoadingPage extends StatefulWidget {
 }
 
 class _StartUpLoadingPageState extends State<StartUpLoadingPage> {
+
+  String _loadingText = 'Loading...';
+
   @override
   void initState() {
     super.initState();
@@ -19,16 +21,26 @@ class _StartUpLoadingPageState extends State<StartUpLoadingPage> {
   }
 
   void _loading()async{
+    setState(() {
+      _loadingText = 'Load Theme';
+    });
     await CustomMaterial.of(context)!.loadTheme();
+    setState(() {
+      _loadingText = 'Check Auth';
+    });
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _loadingText = 'Finished';
+    });
     widget.onLoadingResult();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Text('Loading Screen'),
+          child: Text(_loadingText),
         ),
       ),
     );
