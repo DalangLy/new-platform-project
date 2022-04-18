@@ -15,6 +15,9 @@ class HomeWrapperPage extends StatefulWidget {
   const HomeWrapperPage({Key? key, required this.onLogoutResult,})
       : super(key: key);
 
+  static _HomeWrapperPageState? of(BuildContext context){
+    return context.findAncestorStateOfType<_HomeWrapperPageState>();
+  }
   @override
   State<HomeWrapperPage> createState() => _HomeWrapperPageState();
 }
@@ -22,6 +25,7 @@ class HomeWrapperPage extends StatefulWidget {
 class _HomeWrapperPageState extends State<HomeWrapperPage> {
   final List<MainNavigationItem> _navigationItems = const <MainNavigationItem>[
     MainNavigationItem(title: 'Dashboard', iconData: Icons.speed, route: DashboardWrapperRoute(), path: '',),
+    MainNavigationItem(title: 'Tax Type', iconData: Icons.speed, route: TaxTypeWrapperRoute(), path: 'tax-type',),
   ];
   @override
   Widget build(BuildContext context) {
@@ -60,5 +64,9 @@ class _HomeWrapperPageState extends State<HomeWrapperPage> {
         );
       }
     );
+  }
+
+  void logout(BuildContext context){
+    BlocProvider.of<LogoutBloc>(context).logout();
   }
 }

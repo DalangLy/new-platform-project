@@ -1,7 +1,6 @@
-import 'package:platform_project_new/core/core_export.dart';
-import 'package:platform_project_new/core/errors/unknown_failure.dart';
-import 'package:platform_project_new/core/local_storage/i_local_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../core_export.dart';
+import 'i_local_storage.dart';
 
 class DLocalStorage implements ILocalStorage{
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();

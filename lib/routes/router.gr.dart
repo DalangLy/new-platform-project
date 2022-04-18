@@ -10,23 +10,25 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:flutter/material.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 
 import '../features/dashboard/dashboard_export.dart' as _i4;
 import '../features/home/home_export.dart' as _i3;
 import '../features/login/login_export.dart' as _i1;
 import '../features/register/register_export.dart' as _i2;
+import '../features/tax_type/presentation/pages/page_export.dart' as _i5;
+import '../features/tax_type/presentation/pages/tax_type_page.dart' as _i6;
 
-class AppRouter extends _i5.RootStackRouter {
-  AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
+class AppRouter extends _i7.RootStackRouter {
+  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i5.PageFactory> pagesMap = {
+  final Map<String, _i7.PageFactory> pagesMap = {
     LoginRoute.name: (routeData) {
       final args = routeData.argsAs<LoginRouteArgs>();
-      return _i5.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i1.LoginPage(
               key: args.key,
@@ -35,7 +37,7 @@ class AppRouter extends _i5.RootStackRouter {
     },
     RegisterRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterRouteArgs>();
-      return _i5.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i2.RegisterPage(
               key: args.key,
@@ -44,33 +46,48 @@ class AppRouter extends _i5.RootStackRouter {
     },
     HomeWrapperRoute.name: (routeData) {
       final args = routeData.argsAs<HomeWrapperRouteArgs>();
-      return _i5.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i3.HomeWrapperPage(
               key: args.key, onLogoutResult: args.onLogoutResult));
     },
     DashboardWrapperRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i4.DashboardWrapperPage());
+    },
+    TaxTypeWrapperRoute.name: (routeData) {
+      return _i7.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i5.TaxTypeWrapperPage());
+    },
+    TaxTypeRoute.name: (routeData) {
+      return _i7.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i6.TaxTypePage());
     }
   };
 
   @override
-  List<_i5.RouteConfig> get routes => [
-        _i5.RouteConfig(LoginRoute.name, path: '/login'),
-        _i5.RouteConfig(RegisterRoute.name, path: '/register'),
-        _i5.RouteConfig(HomeWrapperRoute.name, path: '/', children: [
-          _i5.RouteConfig(DashboardWrapperRoute.name,
-              path: '', parent: HomeWrapperRoute.name)
+  List<_i7.RouteConfig> get routes => [
+        _i7.RouteConfig(LoginRoute.name, path: '/login'),
+        _i7.RouteConfig(RegisterRoute.name, path: '/register'),
+        _i7.RouteConfig(HomeWrapperRoute.name, path: '/', children: [
+          _i7.RouteConfig(DashboardWrapperRoute.name,
+              path: '', parent: HomeWrapperRoute.name),
+          _i7.RouteConfig(TaxTypeWrapperRoute.name,
+              path: 'tax-type',
+              parent: HomeWrapperRoute.name,
+              children: [
+                _i7.RouteConfig(TaxTypeRoute.name,
+                    path: '', parent: TaxTypeWrapperRoute.name)
+              ])
         ])
       ];
 }
 
 /// generated route for
 /// [_i1.LoginPage]
-class LoginRoute extends _i5.PageRouteInfo<LoginRouteArgs> {
+class LoginRoute extends _i7.PageRouteInfo<LoginRouteArgs> {
   LoginRoute(
-      {_i6.Key? key,
+      {_i8.Key? key,
       required dynamic Function(bool) onLoginResult,
       required void Function() onRegisterTapped})
       : super(LoginRoute.name,
@@ -87,7 +104,7 @@ class LoginRouteArgs {
   const LoginRouteArgs(
       {this.key, required this.onLoginResult, required this.onRegisterTapped});
 
-  final _i6.Key? key;
+  final _i8.Key? key;
 
   final dynamic Function(bool) onLoginResult;
 
@@ -101,9 +118,9 @@ class LoginRouteArgs {
 
 /// generated route for
 /// [_i2.RegisterPage]
-class RegisterRoute extends _i5.PageRouteInfo<RegisterRouteArgs> {
+class RegisterRoute extends _i7.PageRouteInfo<RegisterRouteArgs> {
   RegisterRoute(
-      {_i6.Key? key,
+      {_i8.Key? key,
       required void Function() onRegisterSuccess,
       required void Function() backToLoginTapped})
       : super(RegisterRoute.name,
@@ -122,7 +139,7 @@ class RegisterRouteArgs {
       required this.onRegisterSuccess,
       required this.backToLoginTapped});
 
-  final _i6.Key? key;
+  final _i8.Key? key;
 
   final void Function() onRegisterSuccess;
 
@@ -136,11 +153,11 @@ class RegisterRouteArgs {
 
 /// generated route for
 /// [_i3.HomeWrapperPage]
-class HomeWrapperRoute extends _i5.PageRouteInfo<HomeWrapperRouteArgs> {
+class HomeWrapperRoute extends _i7.PageRouteInfo<HomeWrapperRouteArgs> {
   HomeWrapperRoute(
-      {_i6.Key? key,
+      {_i8.Key? key,
       required void Function() onLogoutResult,
-      List<_i5.PageRouteInfo>? children})
+      List<_i7.PageRouteInfo>? children})
       : super(HomeWrapperRoute.name,
             path: '/',
             args:
@@ -153,7 +170,7 @@ class HomeWrapperRoute extends _i5.PageRouteInfo<HomeWrapperRouteArgs> {
 class HomeWrapperRouteArgs {
   const HomeWrapperRouteArgs({this.key, required this.onLogoutResult});
 
-  final _i6.Key? key;
+  final _i8.Key? key;
 
   final void Function() onLogoutResult;
 
@@ -165,8 +182,26 @@ class HomeWrapperRouteArgs {
 
 /// generated route for
 /// [_i4.DashboardWrapperPage]
-class DashboardWrapperRoute extends _i5.PageRouteInfo<void> {
+class DashboardWrapperRoute extends _i7.PageRouteInfo<void> {
   const DashboardWrapperRoute() : super(DashboardWrapperRoute.name, path: '');
 
   static const String name = 'DashboardWrapperRoute';
+}
+
+/// generated route for
+/// [_i5.TaxTypeWrapperPage]
+class TaxTypeWrapperRoute extends _i7.PageRouteInfo<void> {
+  const TaxTypeWrapperRoute({List<_i7.PageRouteInfo>? children})
+      : super(TaxTypeWrapperRoute.name,
+            path: 'tax-type', initialChildren: children);
+
+  static const String name = 'TaxTypeWrapperRoute';
+}
+
+/// generated route for
+/// [_i6.TaxTypePage]
+class TaxTypeRoute extends _i7.PageRouteInfo<void> {
+  const TaxTypeRoute() : super(TaxTypeRoute.name, path: '');
+
+  static const String name = 'TaxTypeRoute';
 }

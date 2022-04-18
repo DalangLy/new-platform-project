@@ -1,11 +1,13 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:platform_project_new/core/http_client/i_http_client.dart';
+import 'i_http_client.dart';
 
 class DHttpClient implements IHttpClient{
+  
   final Dio _dio = Dio();
-  Future<DResponse<dynamic>> post({required String path, required dynamic data, DOptions? options}) async{
+
+  @override
+  Future<DResponse> post({required String path, required data, DOptions? options}) async{
     try{
       final Response<dynamic> _response = await _dio.post(path, data: data);
 

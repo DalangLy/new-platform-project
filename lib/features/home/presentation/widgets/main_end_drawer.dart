@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../root_material_app.dart';
-import '../blocs/logout/logout_bloc.dart';
+
+import 'end_drawer/end_drawer_page_route.dart';
 
 class MainEndDrawer extends StatelessWidget {
   const MainEndDrawer({Key? key}) : super(key: key);
@@ -18,66 +17,9 @@ class MainEndDrawer extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
-            child: ListView(
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.monitor),
-                  title: const Text('System Theme Mode'),
-                  onTap: () {
-                    CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.system);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.dark_mode),
-                  title: const Text('Dark Theme Mode'),
-                  onTap: () {
-                    CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.dark);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.light_mode),
-                  title: const Text('Light Theme Mode'),
-                  onTap: () {
-                    CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.light);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.language),
-                  title: const Text('System Language'),
-                  onTap: () {
-                    CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.system);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.language),
-                  title: const Text('English'),
-                  onTap: () {
-                    CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.system);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.language),
-                  title: const Text('Khmer'),
-                  onTap: () {
-                    CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.system);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.logout),
-                  title: const Text('Logout'),
-                  onTap: () {
-                    BlocProvider.of<LogoutBloc>(context).logout();
-                  },
-                  trailing: BlocBuilder<LogoutBloc, LogoutState>(
-                    builder: (context, state) {
-                      if (state is LogoutInProgress) {
-                        return const CircularProgressIndicator();
-                      }
-                      return const SizedBox();
-                    },
-                  ),
-                ),
-              ],
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: const EndDrawerPageRoute(),
             ),
           ),
         ),

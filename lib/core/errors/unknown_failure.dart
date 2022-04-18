@@ -1,4 +1,4 @@
-import 'package:platform_project_new/core/core_export.dart';
+import 'failure.dart';
 
 class UnknownFailure extends Failure{
   UnknownFailure({required String message}) : super(message: message);
