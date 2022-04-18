@@ -27,6 +27,9 @@ class _TaxTypePageState extends State<TaxTypePage> {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
           HomeWrapperPage.of(context)!.logout(context);
         }
+        else if(state is GetAllTaxTypesSuccess){
+          print(state.data.length);
+        }
       },
       child: ListView.builder(
         itemCount: 100,

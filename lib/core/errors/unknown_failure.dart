@@ -1,4 +1,4 @@
-import 'failure.dart';
+import '../../vendor/abstraction_export.dart';
 
 class UnknownFailure extends Failure{
   UnknownFailure({required String message}) : super(message: message);

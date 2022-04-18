@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../vendor/abstraction_export.dart';
 import '../core_export.dart';
-import 'i_local_storage.dart';
 
 class DLocalStorage implements ILocalStorage{
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();

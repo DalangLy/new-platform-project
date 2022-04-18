@@ -1,7 +1,10 @@
-import 'package:platform_project_new/core/errors/unknown_failure.dart';
+import '../../../../core/core_export.dart';
 
-class GetAllTaxTypesUseCase{
-  Future<void> call(){
-    throw UnknownFailure(message: 'Failed');
+class GetAllTaxTypesUseCase implements IGetUseCase{
+  final IGetRepository _repository;
+  const GetAllTaxTypesUseCase(this._repository);
+  @override
+  Future<List<ResponseEntity>> call() {
+    return _repository.get();
   }
 }

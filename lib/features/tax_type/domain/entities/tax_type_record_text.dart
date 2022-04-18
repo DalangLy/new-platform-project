@@ -1,0 +1,47 @@
+import '../../../../core/core_export.dart';
+
+class TaxTypeRecordText extends ResponseEntityRecordText {
+  final String taxTypeRecordId;
+  TaxTypeRecordText({
+    required String id,
+    required DateTime createdDate,
+    required DateTime? modifiedDate,
+    required String createdUserId,
+    required String? modifiedUserId,
+    required String periodId,
+    required DateTime? periodBeginDate,
+    required DateTime? periodEndDate,
+    required String languageId,
+    required String languageCode,
+    required String languageGlobalText,
+    required String languageCultureText,
+    required String reasonCodeId,
+    required String reasonCodeCode,
+    required String? reasonCodeDescription,
+    required String? description,
+    required String? shortText,
+    required String? text,
+    required String? longText,
+    required this.taxTypeRecordId,
+  }) : super(
+          id: id,
+          createdDate: createdDate,
+          modifiedDate: modifiedDate,
+          createdUserId: createdUserId,
+          modifiedUserId: modifiedUserId,
+          periodId: periodId,
+          periodBeginDate: periodBeginDate,
+          periodEndDate: periodEndDate,
+          languageId: languageId,
+          languageCode: languageCode,
+          languageGlobalText: languageGlobalText,
+          languageCultureText: languageCultureText,
+          reasonCodeId: reasonCodeId,
+          reasonCodeCode: reasonCodeCode,
+          reasonCodeDescription: reasonCodeDescription,
+          description: description,
+          shortText: shortText,
+          text: text,
+          longText: longText,
+        );
+}

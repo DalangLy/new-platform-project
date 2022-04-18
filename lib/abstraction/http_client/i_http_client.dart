@@ -1,5 +1,6 @@
 abstract class IHttpClient{
   Future<DResponse<dynamic>> post({required String path, required dynamic data, DOptions? options});
+  Future<DResponse<dynamic>> get({required String path, DOptions? options});
 }
 
 class DResponse<T>{

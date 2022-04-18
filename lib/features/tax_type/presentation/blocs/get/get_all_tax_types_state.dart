@@ -15,6 +15,8 @@ class GetAllTaxTypesInProgress extends GetAllTaxTypesState {
 }
 
 class GetAllTaxTypesSuccess extends GetAllTaxTypesState {
+  final List<ResponseEntity> data;
+  const GetAllTaxTypesSuccess({required this.data});
   @override
   List<Object> get props => [];
 }
