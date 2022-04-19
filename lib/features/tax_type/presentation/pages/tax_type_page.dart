@@ -1,7 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:platform_project_new/core/core_export.dart';
-import 'package:platform_project_new/core/widgets/d_paginated_data_table.dart';
 import 'package:platform_project_new/features/home/home_export.dart';
 import 'package:platform_project_new/features/tax_type/domain/domain_export.dart';
 import 'package:platform_project_new/features/tax_type/presentation/blocs/get/get_all_tax_types_bloc.dart';
@@ -39,7 +39,9 @@ class _TaxTypePageState extends State<TaxTypePage> {
         breadCrumbs: const [
           DBreadCrumb(title: 'Tax Type',),
         ],
-        onAddTapped: (){},
+        onAddTapped: (){
+          AutoRouter.of(context).pushNamed('add');
+        },
         body: BlocBuilder<GetAllTaxTypesBloc, GetAllTaxTypesState>(
           builder: (context, state) {
             if(state is GetAllTaxTypesSuccess){
@@ -64,7 +66,7 @@ class _TaxTypePageState extends State<TaxTypePage> {
                 },
               );
             }
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),

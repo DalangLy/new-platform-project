@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class DHomeInnerScaffold extends StatefulWidget {
   final List<DBreadCrumb> breadCrumbs;
   final Widget body;
-  final VoidCallback onAddTapped;
+  final VoidCallback? onAddTapped;
 
   const DHomeInnerScaffold({
     Key? key,
     required this.breadCrumbs,
     required this.body,
-    required this.onAddTapped,
+    this.onAddTapped,
   }) : super(key: key);
 
   static _DHomeInnerScaffoldState? of(BuildContext context){
@@ -36,17 +36,13 @@ class _DHomeInnerScaffoldState extends State<DHomeInnerScaffold> {
   void _buildBreadCrumbs() {
     for (var element in widget.breadCrumbs) {
       final Widget breadCrumbButton = TextButton(
-        onPressed: element.path == null
-            ? null
-            : () {
-          AutoRouter.of(context).pushNamed(element.path!);
-        },
+        onPressed: element.onTapped,
         child: Text(
           element.title,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style:
-          TextStyle(color: element.path == null ? Colors.grey : Colors.black,),
+          TextStyle(color: element.onTapped == null ? Colors.grey : Colors.black,),
         ),
       );
       _breadCrumbWidgets.add(breadCrumbButton);
@@ -87,7 +83,7 @@ class _DHomeInnerScaffoldState extends State<DHomeInnerScaffold> {
           ],
         ),
         actions: [
-          IconButton(onPressed: widget.onAddTapped, icon: const Icon(Icons.add)),
+          widget.onAddTapped == null ? const SizedBox() :  IconButton(onPressed: widget.onAddTapped, icon: const Icon(Icons.add)),
         ],
       ),
       body: SafeArea(
@@ -99,10 +95,10 @@ class _DHomeInnerScaffoldState extends State<DHomeInnerScaffold> {
 
 class DBreadCrumb {
   final String title;
-  final String? path;
+  final VoidCallback? onTapped;
 
   const DBreadCrumb({
     required this.title,
-    this.path,
+    this.onTapped,
   });
 }

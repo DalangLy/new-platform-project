@@ -26,7 +26,12 @@ class HomeWrapperPage extends StatefulWidget {
 class _HomeWrapperPageState extends State<HomeWrapperPage> {
   final List<MainNavigationItem> _navigationItems = const <MainNavigationItem>[
     MainNavigationItem(title: 'Dashboard', iconData: Icons.speed, route: DashboardWrapperRoute(), path: '',),
-    MainNavigationItem(title: 'Tax Type', iconData: Icons.speed, route: TaxTypeWrapperRoute(), path: 'tax-type',),
+    MainNavigationItem(title: 'Tax', iconData: Icons.speed, route: TaxWrapperRoute(), path: 'tax',
+      children: <MainNavigationItem>[
+        MainNavigationItem(title: 'Tax', iconData: Icons.speed, route: TaxWrapperRoute(), path: 'tax',),
+        MainNavigationItem(title: 'Tax Type', iconData: Icons.speed, route: TaxTypeWrapperRoute(), path: 'tax-type',),
+      ],
+    ),
   ];
   @override
   Widget build(BuildContext context) {
