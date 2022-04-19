@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../app_export.dart';
 import '../../../../core/http_client/d_http_client.dart';
 import '../../../../core/local_storage/d_local_storage.dart';
-import '../../../../root_material_app.dart';
 import '../../data/data_sources/login_local_data_source.dart';
 import '../../data/data_sources/login_remote_data_source.dart';
 import '../../data/repositories/login_repository.dart';
@@ -43,13 +43,13 @@ class LoginPage extends StatelessWidget {
                   themeButton: Column(
                     children: [
                       ElevatedButton(onPressed: (){
-                        CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.system);
+                        CustomMaterialApp.of(context)!.changeTheme(themeMode: ThemeMode.system);
                       }, child: const Text('System')),
                       ElevatedButton(onPressed: (){
-                        CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.light);
+                        CustomMaterialApp.of(context)!.changeTheme(themeMode: ThemeMode.light);
                       }, child: const Text('Light')),
                       ElevatedButton(onPressed: (){
-                        CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.dark);
+                        CustomMaterialApp.of(context)!.changeTheme(themeMode: ThemeMode.dark);
                       }, child: const Text('Dark')),
                     ],
                   ),

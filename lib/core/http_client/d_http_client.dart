@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import '../../vendor/abstraction_export.dart';
+import '../../abstraction/abstraction_export.dart';
 
 class DHttpClient implements IHttpClient{
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../root_material_app.dart';
+import '../../../../../app_export.dart';
 
 class EndDrawerLanguage extends StatelessWidget {
   const EndDrawerLanguage({Key? key}) : super(key: key);
@@ -16,21 +16,21 @@ class EndDrawerLanguage extends StatelessWidget {
             leading: const Icon(Icons.language),
             title: const Text('System Language'),
             onTap: () {
-              CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.system);
+              CustomMaterialApp.of(context)!.changeTheme(themeMode: ThemeMode.system);
             },
           ),
           ListTile(
             leading: const Icon(Icons.language),
             title: const Text('English'),
             onTap: () {
-              CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.system);
+              CustomMaterialApp.of(context)!.changeTheme(themeMode: ThemeMode.system);
             },
           ),
           ListTile(
             leading: const Icon(Icons.language),
             title: const Text('Khmer'),
             onTap: () {
-              CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.system);
+              CustomMaterialApp.of(context)!.changeTheme(themeMode: ThemeMode.system);
             },
           ),
         ],

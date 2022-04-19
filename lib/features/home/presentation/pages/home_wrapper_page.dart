@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:platform_project_new/routes/router.gr.dart';
-
+import '../../../../routes/router.gr.dart';
 import '../blocs/logout/logout_bloc.dart';
 import '../widgets/animated_menu_icon.dart';
 import '../widgets/custom_home_scaffold.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../root_material_app.dart';
+import '../../../../app_export.dart';
 
 class StartUpLoadingPage extends StatefulWidget {
   final VoidCallback onLoadingResult;
@@ -24,7 +24,7 @@ class _StartUpLoadingPageState extends State<StartUpLoadingPage> {
     setState(() {
       _loadingText = 'Load Theme';
     });
-    await CustomMaterial.of(context)!.loadTheme();
+    await CustomMaterialApp.of(context)!.loadTheme();
     setState(() {
       _loadingText = 'Check Auth';
     });

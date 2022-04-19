@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../vendor/abstraction_export.dart';
+import '../../abstraction/abstraction_export.dart';
 import '../core_export.dart';
 
 class DLocalStorage implements ILocalStorage{

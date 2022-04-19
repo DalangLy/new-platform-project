@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../../core/core_export.dart';
+import '../../../../abstraction/abstraction_export.dart';
 import '../../domain/entities/login_data.dart';
 import '../../domain/use_cases/login_use_case.dart';
 

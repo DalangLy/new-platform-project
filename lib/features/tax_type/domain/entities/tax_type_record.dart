@@ -1,4 +1,4 @@
-import '../../../../core/core_export.dart';
+import '../../../../abstraction/abstraction_export.dart';
 import 'tax_type_record_text.dart';
 
 class TaxTypeRecord extends ResponseEntityRecord {

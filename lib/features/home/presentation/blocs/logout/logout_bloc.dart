@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../../../core/core_export.dart';
+import '../../../../../abstraction/abstraction_export.dart';
 
 part 'logout_event.dart';
 part 'logout_state.dart';

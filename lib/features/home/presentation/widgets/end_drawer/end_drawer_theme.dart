@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../root_material_app.dart';
+import '../../../../../app_export.dart';
 
 class EndDrawerTheme extends StatelessWidget {
   const EndDrawerTheme({Key? key}) : super(key: key);
@@ -17,21 +16,21 @@ class EndDrawerTheme extends StatelessWidget {
             leading: const Icon(Icons.monitor),
             title: const Text('System'),
             onTap: () {
-              CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.system);
+              CustomMaterialApp.of(context)!.changeTheme(themeMode: ThemeMode.system);
             },
           ),
           ListTile(
             leading: const Icon(Icons.dark_mode),
             title: const Text('Dark'),
             onTap: () {
-              CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.dark);
+              CustomMaterialApp.of(context)!.changeTheme(themeMode: ThemeMode.dark);
             },
           ),
           ListTile(
             leading: const Icon(Icons.light_mode),
             title: const Text('Light'),
             onTap: () {
-              CustomMaterial.of(context)!.changeTheme(themeMode: ThemeMode.light);
+              CustomMaterialApp.of(context)!.changeTheme(themeMode: ThemeMode.light);
             },
           ),
         ],
