@@ -28,7 +28,7 @@ class _StartUpLoadingPageState extends State<StartUpLoadingPage> {
     setState(() {
       _loadingText = 'Check Auth';
     });
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 100));
     setState(() {
       _loadingText = 'Finished';
     });

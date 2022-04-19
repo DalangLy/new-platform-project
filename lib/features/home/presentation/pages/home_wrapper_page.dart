@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../app_export.dart';
 import '../../../../routes/router.gr.dart';
+import '../../../tax_type/tax_type_export.dart';
 import '../blocs/logout/logout_bloc.dart';
 import '../widgets/animated_menu_icon.dart';
 import '../widgets/custom_home_scaffold.dart';
@@ -47,7 +49,9 @@ class _HomeWrapperPageState extends State<HomeWrapperPage> {
                   navigationItems: _navigationItems,
                 ),
                 endDrawer: const MainEndDrawer(),
-                body: const AutoRouter(),
+                body: HomeMultiBlocProviders(
+                  child: const AutoRouter(),
+                ),
               ),
             );
           }
@@ -68,4 +72,12 @@ class _HomeWrapperPageState extends State<HomeWrapperPage> {
   void logout(BuildContext context){
     BlocProvider.of<LogoutBloc>(context).logout();
   }
+}
+
+
+// Add Get All Blocs As Global Home BlocProvider to keep all data alive while switching to other page
+class HomeMultiBlocProviders extends MultiBlocProvider{
+  HomeMultiBlocProviders({Key? key, required Widget child}) : super(key: key, providers: [
+    BlocProvider(create: (context) => GetAllTaxTypesBloc(GetAllTaxTypesUseCase(TaxTypeRepository(TaxTypeRemoteDataSource(getIt())))),),
+  ], child: child);
 }

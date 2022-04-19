@@ -9,6 +9,12 @@ class GetAllTaxTypesBloc extends Bloc<GetAllTaxTypesEvent, GetAllTaxTypesState> 
   final IGetUseCase _useCase;
   GetAllTaxTypesBloc(this._useCase) : super(GetAllTaxTypesInitial()) {
     on<GetAllTaxTypesEvent>((event, emit) async{
+      print(state);
+      if(event is GetAllTaxTypeIfNotExisted){
+        if(state is !GetAllTaxTypesSuccess){
+          loadAll();
+        }
+      }
       if(event is GetAllTaxTypes){
         emit(GetAllTaxTypesInProgress());
         try{
@@ -27,5 +33,9 @@ class GetAllTaxTypesBloc extends Bloc<GetAllTaxTypesEvent, GetAllTaxTypesState> 
 
   void loadAll(){
     add(GetAllTaxTypes());
+  }
+
+  void loadIfNotExisted(){
+    add(GetAllTaxTypeIfNotExisted());
   }
 }

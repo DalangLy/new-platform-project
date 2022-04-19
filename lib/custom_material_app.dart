@@ -34,7 +34,7 @@ class _CustomMaterialAppState extends State<CustomMaterialApp> {
   }
 
   Future<void> loadTheme() async{
-    await Future.delayed(const Duration(seconds: 2));
+    // await Future.delayed(const Duration(seconds: 2));
     final SharedPreferences prefs = await _prefs;
     final int themeModeIndex = prefs.getInt('themeMode') ?? 0;
     switch(themeModeIndex){

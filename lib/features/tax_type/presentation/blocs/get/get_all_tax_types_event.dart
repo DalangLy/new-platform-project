@@ -8,3 +8,8 @@ class GetAllTaxTypes extends GetAllTaxTypesEvent {
   @override
   List<Object> get props => [];
 }
+
+class GetAllTaxTypeIfNotExisted extends GetAllTaxTypesEvent {
+  @override
+  List<Object> get props => [];
+}
