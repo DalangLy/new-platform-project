@@ -13,7 +13,7 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource{
   Future<TokenModel> login({required LoginDataModel loginDataModel}) async{
     try{
       final DResponse<dynamic> _response = await _httpClient.post(
-          path: 'https://96.9.67.188:4434/api/identity/token',
+          path: '/api/identity/token',
           data: loginDataModel.toJson(),
       );
       if(_response.statusCode == 200){

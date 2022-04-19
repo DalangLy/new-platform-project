@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../app_export.dart';
-import '../../../../core/http_client/d_http_client.dart';
-import '../../../../core/local_storage/d_local_storage.dart';
 import '../../data/data_sources/login_local_data_source.dart';
 import '../../data/data_sources/login_remote_data_source.dart';
 import '../../data/repositories/login_repository.dart';
@@ -19,7 +17,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(LoginUseCase(LoginRepository(LoginRemoteDataSource(DHttpClient()), LoginLocalDataSource(DLocalStorage())))),
+      create: (context) => LoginBloc(LoginUseCase(LoginRepository(LoginRemoteDataSource(getIt()), LoginLocalDataSource(getIt())))),
       child: Builder(
         builder: (context) {
           return BlocListener<LoginBloc, LoginState>(

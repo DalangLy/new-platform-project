@@ -20,4 +20,12 @@ class TokenModel extends Token {
       throw SerializeTokenFailure(message: 'Failed To Serialize Token');
     }
   }
+
+  Map<String, dynamic> toJson(){
+    return {
+      'token': accessToken,
+      'refreshToken': refreshToken,
+      'refreshTokenExpiryTime': refreshTokenExpiryTime,
+    };
+  }
 }

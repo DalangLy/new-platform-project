@@ -10,13 +10,17 @@ class LoginLocalDataSource implements ILoginLocalDataSource{
   @override
   Future<bool> storeToken({required TokenModel tokenModel}) async{
     try{
-      final bool _isSaved = await _localStorage.save(name: 'token', data: tokenModel.toString());
+      final bool _isSaved = await _localStorage.save(key: 'token', value: [
+        tokenModel.accessToken,
+        tokenModel.refreshToken,
+        tokenModel.refreshTokenExpiryTime.toString(),
+      ]);
       return _isSaved;
     }on Failure{
       rethrow;
     }
     catch(e){
-      throw UnknownFailure(message: 'message');
+      throw UnknownFailure(message: 'failed to storage token to local storage');
     }
   }
 }

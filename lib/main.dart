@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'root_material_app.dart';
+import 'app_export.dart';
 
 void main() {
+  injector();
   runApp(const RootMaterialApp());
 
   //(development only) to allow using localhost uri for api
