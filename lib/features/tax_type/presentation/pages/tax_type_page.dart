@@ -45,25 +45,27 @@ class _TaxTypePageState extends State<TaxTypePage> {
         body: BlocBuilder<GetAllTaxTypesBloc, GetAllTaxTypesState>(
           builder: (context, state) {
             if(state is GetAllTaxTypesSuccess){
-              return DPaginatedDataTable(
-                headers: const ['ID', 'Code'],
-                itemCount: state.data.length,
-                valueBuilder: (index){
-                  final TaxType taxType = state.data[index] as TaxType;
-                  return [
-                    Text(taxType.id),
-                    Text(taxType.code),
-                  ];
-                },
-                onRowSelect: (index){
-                  print(index);
-                },
-                onDeleteTapped: (index){
-                  print('delete $index');
-                },
-                onEditTapped: (index){
-                  print('edit $index');
-                },
+              return SingleChildScrollView(
+                child: DPaginatedDataTable(
+                  headers: const ['ID', 'Code'],
+                  itemCount: state.data.length,
+                  valueBuilder: (index){
+                    final TaxType taxType = state.data[index] as TaxType;
+                    return [
+                      Text(taxType.id),
+                      Text(taxType.code),
+                    ];
+                  },
+                  onRowSelect: (index){
+                    print(index);
+                  },
+                  onDeleteTapped: (index){
+                    print('delete $index');
+                  },
+                  onEditTapped: (index){
+                    print('edit $index');
+                  },
+                ),
               );
             }
             return const Center(child: CircularProgressIndicator());

@@ -3,14 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:platform_project_new/features/tax_type/presentation/widgets/add_tax_type_form.dart';
 import '../../../../core/core_export.dart';
 
-class AddTaxTypePage extends StatelessWidget {
+class AddTaxTypePage extends StatefulWidget {
   const AddTaxTypePage({Key? key}) : super(key: key);
-  static List<ItemGG> _itemGG = [
+
+  @override
+  State<AddTaxTypePage> createState() => _AddTaxTypePageState();
+}
+
+class _AddTaxTypePageState extends State<AddTaxTypePage> {
+
+  final List<ItemGG> _itemGG = [
     ItemGG(text: 'Record 1'),
     ItemGG(text: 'Record 2'),
     ItemGG(text: 'Record 3'),
     ItemGG(text: 'Record 4'),
   ];
+
+  int _lastIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return DHomeInnerScaffold(
@@ -22,20 +32,28 @@ class AddTaxTypePage extends StatelessWidget {
       ],
       body: SingleChildScrollView(
         child: ExpansionPanelList(
-          children: [
-            ExpansionPanel(
-              isExpanded: true,
+          expansionCallback: (index, isExpanded){
+            setState(() {
+              _itemGG[_lastIndex].isExpanded = isExpanded;
+              _itemGG[index].isExpanded = !isExpanded;
+
+              _lastIndex = index;
+            });
+          },
+          children: _itemGG.map<ExpansionPanel>((e) {
+            return ExpansionPanel(
+              isExpanded: e.isExpanded,
               headerBuilder: (context, isExpanded) {
-                return const ListTile(
-                  title: Text('Record 1'),
+                return ListTile(
+                  title: Text('$e'),
                 );
               },
               body: Container(
                 height: 200,
                 color: Colors.red,
               ),
-            )
-          ],
+            );
+          }).toList(),
         ),
       ),
     );
